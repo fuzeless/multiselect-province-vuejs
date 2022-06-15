@@ -99,8 +99,6 @@ $common-padding: 16px;
 
 .select {
   height: 304px;
-  /* overflow-y: auto; */
-  /* box-sizing: border-box; */
   border-radius: $border-radius;
   box-shadow: 0px 1px 8px rgba(102, 102, 102, 0.2);
 
@@ -152,7 +150,6 @@ $common-padding: 16px;
       }
     }
 
-    /* Custom checkbox */
     .checkmark {
       position: absolute;
       top: 12px;
@@ -163,21 +160,16 @@ $common-padding: 16px;
       border: 1px solid #666666;
       border-radius: $border-radius;
 
-      /* Create the checkmark/indicator (hidden when not checked) */
       &:after {
         content: '';
         position: absolute;
         display: none;
-
-        /* Checkmark styling */
         left: 5.5px;
         top: 3px;
         width: 3px;
         height: 6px;
         border: solid white;
         border-width: 0 2px 2px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
         transform: rotate(45deg);
       }
     }

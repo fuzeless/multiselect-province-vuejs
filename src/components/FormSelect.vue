@@ -3,7 +3,7 @@
     <VuePerfectScrollbar class="select__scrollbar">
       <label
         class="select__item"
-        v-for="option in options"
+        v-for="option in filteredList"
         :key="option[indexKey]"
         :for="option[indexKey]"
       >
@@ -21,7 +21,9 @@
     </VuePerfectScrollbar>
     <div class="select__buttons">
       <Button
-        :variant="this.$store.getters.isPreSelectedEmpty ? 'disabled' : 'primary'"
+        :variant="
+          this.$store.getters.isPreSelectedEmpty ? 'disabled' : 'primary'
+        "
         @click="handleButtonClick('select')"
         >Đồng ý</Button
       >
@@ -49,6 +51,19 @@ export default {
       set() {
         this.$store.commit('setPreSelectedProvince', this.selected);
       },
+    },
+    query: {
+      get() {
+        return this.$store.getters.getQuery;
+      },
+      set(query) {
+        this.$store.dispatch('setQuery', query);
+      },
+    },
+    filteredList() {
+      return this.options.filter(
+        (option) => option[this.nameKey].toLowerCase().includes(this.query.toLowerCase()),
+      );
     },
   },
   props: {

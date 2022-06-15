@@ -5,6 +5,7 @@
       :class="['input__field', { active: showDialog }]"
       id="input-field"
       :placeholder="placeholder"
+      v-model="query"
       @click="$emit('click-input')"
     />
     <font-awesome-icon icon="fa-solid fa-caret-down" class="input__icon" />
@@ -17,6 +18,16 @@ export default {
   props: {
     placeholder: String,
     showDialog: Boolean,
+  },
+  computed: {
+    query: {
+      get() {
+        return this.$store.getters.getQuery;
+      },
+      set(query) {
+        this.$store.dispatch('setQuery', query);
+      },
+    },
   },
 };
 </script>

@@ -14,6 +14,7 @@ export default createStore({
     // but not confirming the choice
     preselected: [],
     showDialog: false,
+    query: '',
   },
   getters: {
     getAllProvincesWithCode: (state) => state.provinces.map((province) => ({
@@ -31,6 +32,7 @@ export default createStore({
     isProvincePreSelected: (state) => (code) => state.preselected.includes(code),
     isPreSelectedEmpty: (state) => state.preselected.length === 0,
     getShowDialog: (state) => state.showDialog,
+    getQuery: (state) => state.query,
   },
   mutations: {
     setProvinces(state, provinces) {
@@ -64,6 +66,9 @@ export default createStore({
     },
     setShowDialog(state, showDialog) {
       state.showDialog = showDialog;
+    },
+    setQuery(state, query) {
+      state.query = query;
     },
   },
   actions: {
@@ -99,6 +104,9 @@ export default createStore({
     },
     setShowDialog({ commit }, showDialog) {
       commit('setShowDialog', showDialog);
+    },
+    setQuery({ commit }, query) {
+      commit('setQuery', query);
     },
   },
   modules: {
